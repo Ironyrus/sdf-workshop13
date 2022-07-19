@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Address Book WebApp</title>
+    </head>
+    <body>
+        <h1>Application Form</h1>
+        <br>
+        <form action="#" 
+            th:action="@{/addressBook}"
+            th:object="${contact}"
+            method="post"> 
+            <!-- action means go to that request mapping-->
+            Name: <input type="text" th:field="*{name}" placeholder="Name" /><br><br>
+            E-mail: <input type="text" th:field="*{email}" placeholder="E-mail" /><br><br>
+            Telephone number: <input type="text" th:field="*{phoneNumber}" placeholder="Telephone number" />
+            <br><br><input type="submit" value="Generate" />
+        </form>
+        <br><br>
+        <H1>Retrieve Data</H1>
+        <p>Try the following filenames: </p>
+        <ul th:each="item : ${fileList}">
+            <li data-th-text="${item}"></li>
+        </ul>
+        <form method="get" action="/contact">
+            ID: <input type="text" name="id" />
+            <br><br><input type="submit" value="Get ID" />
+        </form>
+    </body>
+</html>
